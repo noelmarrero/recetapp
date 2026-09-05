@@ -1,0 +1,96 @@
+.presentacion {
+    background-color: #fff0e3;
+    text-align: center;
+    padding: 55px 0;
+}
+
+.presentacion h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.presentacion p {
+    font-size: 18px;
+    margin-bottom: 22px;
+}
+
+.buscador {
+    display: flex;
+    width: 550px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.buscador input {
+    width: 80%;
+    padding: 11px;
+    border: 1px solid #a99487;
+}
+
+.buscador button {
+    width: 20%;
+    background-color: #cf4428;
+    color: white;
+    border: 1px solid #cf4428;
+    cursor: pointer;
+}
+
+.seccion {
+    padding: 40px 0;
+}
+
+.seccion h2 {
+    margin-bottom: 22px;
+}
+
+.lista-recetas {
+    display: flex;
+    justify-content: space-between;
+}
+
+.receta {
+    width: 31%;
+    border: 1px solid #d7c0b0;
+    background-color: white;
+}
+
+.imagen-receta {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.texto-receta {
+    padding: 15px;
+}
+
+.texto-receta h3 {
+    margin-bottom: 8px;
+}
+
+.texto-receta p {
+    margin-bottom: 8px;
+}
+
+@media screen and (max-width: 700px) {
+    .presentacion h1 {
+        font-size: 30px;
+    }
+
+    .buscador input {
+        width: 70%;
+    }
+
+    .buscador button {
+        width: 30%;
+    }
+
+    .lista-recetas {
+        flex-direction: column;
+    }
+
+    .receta {
+        width: 100%;
+        margin-bottom: 18px;
+    }
+}

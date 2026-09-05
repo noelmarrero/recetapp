@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/registrarse.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="index.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp</span>
+            </a>
+            <a href="index.html">Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="pagina-registro">
+        <div class="registro-contenedor">
+            <h1>Crear una cuenta</h1>
+            <p class="descripcion-formulario">Completá el formulario para registrarte.</p>
+
+            <form action="perfil.html">
+                <div class="campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                </div>
+
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" required>
+                </div>
+
+                <div class="campo">
+                    <label for="usuario">Nombre de usuario</label>
+                    <input type="text" id="usuario" required>
+                </div>
+
+                <div class="campo">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" required>
+                </div>
+
+                <div class="campo">
+                    <label for="repetir-contrasena">Repetir contraseña</label>
+                    <input type="password" id="repetir-contrasena" required>
+                </div>
+
+                <button class="boton boton-formulario" type="submit">Registrarse</button>
+            </form>
+
+            <p class="enlace-formulario">
+                ¿Ya tenés una cuenta?
+                <a href="iniciar-sesion.html">Iniciá sesión</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

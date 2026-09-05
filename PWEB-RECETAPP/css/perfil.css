@@ -1,0 +1,83 @@
+.perfil {
+    padding: 40px 0;
+}
+
+.datos-perfil {
+    display: flex;
+    align-items: center;
+    background-color: #fff2e8;
+    border: 1px solid #d7c0b0;
+    padding: 22px;
+}
+
+.foto-perfil {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background-color: #cf4428;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.informacion-perfil {
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.informacion-perfil p {
+    margin-top: 5px;
+}
+
+.recetas-perfil {
+    margin-top: 35px;
+}
+
+.titulo-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.receta-publicada {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d7c0b0;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.imagen-pequena {
+    width: 75px;
+    height: 65px;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.receta-publicada p {
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 700px) {
+    .datos-perfil {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .informacion-perfil {
+        margin: 15px 0;
+    }
+
+    .titulo-perfil {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .titulo-perfil .boton {
+        margin-top: 12px;
+    }
+}

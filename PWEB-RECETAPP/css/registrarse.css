@@ -1,0 +1,61 @@
+.pagina-registro {
+    background-color: #fff4ea;
+    padding: 45px 0;
+}
+
+.registro-contenedor {
+    width: 550px;
+    max-width: 90%;
+    margin: auto;
+    background-color: white;
+    border: 1px solid #d7c0b0;
+    padding: 30px;
+}
+
+.registro-contenedor h1 {
+    margin-bottom: 8px;
+}
+
+.descripcion-formulario {
+    margin-bottom: 22px;
+}
+
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a99487;
+}
+
+.boton-formulario {
+    width: 100%;
+}
+
+.enlace-formulario {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.enlace-formulario a {
+    color: #cf4428;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    .pagina-registro {
+        padding: 30px 0;
+    }
+
+    .registro-contenedor {
+        padding: 20px;
+    }
+}

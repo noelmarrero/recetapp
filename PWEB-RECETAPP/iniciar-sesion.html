@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/iniciar-sesion.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="index.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp</span>
+            </a>
+            <a href="index.html">Volver al inicio</a>
+        </div>
+    </header>
+
+    <main class="pagina-formulario">
+        <div class="formulario-contenedor">
+            <h1>Iniciar sesión</h1>
+            <p class="descripcion-formulario">Ingresá los datos de tu cuenta.</p>
+
+            <form action="perfil.html">
+                <div class="campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" required>
+                </div>
+
+                <div class="campo">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" id="contrasena" required>
+                </div>
+
+                <div class="recordar">
+                    <input type="checkbox" id="recordarme">
+                    <label for="recordarme">Recordarme</label>
+                </div>
+
+                <button class="boton boton-formulario" type="submit">Ingresar</button>
+            </form>
+
+            <p class="enlace-formulario">
+                ¿No tenés una cuenta?
+                <a href="registrarse.html">Registrate</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

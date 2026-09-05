@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/inicio.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="index.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp</span>
+            </a>
+
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="#recetas">Recetas</a>
+                <a href="perfil.html">Perfil</a>
+            </nav>
+
+            <div class="botones-header">
+                <a class="boton-secundario" href="iniciar-sesion.html">Iniciar sesión</a>
+                <a class="boton" href="registrarse.html">Registrarse</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="presentacion">
+            <div class="contenedor">
+                <h1>Encontrá una receta para hoy</h1>
+                <p>Descubrí recetas fáciles y compartí tus comidas favoritas.</p>
+
+                <form class="buscador">
+                    <input type="text" placeholder="Buscar una receta">
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="contenedor seccion" id="recetas">
+            <h2>Recetas destacadas</h2>
+
+            <div class="lista-recetas">
+                <article class="receta">
+                    <a href="receta.html">
+                    <img class="imagen-receta" src="imagenes/pasta.jpg" alt="Plato de pasta con salsa">
+                    <div class="texto-receta">
+                        <h3>Pasta con salsa</h3>
+                        <p>Una receta fácil para preparar en casa.</p>
+                        <p><strong>Tiempo:</strong> 30 minutos</p>
+                    </div>
+                    </a>
+                </article>
+
+                <article class="receta">
+                    <img class="imagen-receta" src="imagenes/ensalada.jpg" alt="Ensalada completa">
+                    <div class="texto-receta">
+                        <h3>Ensalada completa</h3>
+                        <p>Una opción fresca y rápida para el almuerzo.</p>
+                        <p><strong>Tiempo:</strong> 15 minutos</p>
+                    </div>
+                </article>
+
+                <article class="receta">
+                    <img class="imagen-receta" src="imagenes/torta.jpg" alt="Torta de chocolate">
+                    <div class="texto-receta">
+                        <h3>Torta de chocolate</h3>
+                        <p>Una torta casera para la merienda.</p>
+                        <p><strong>Tiempo:</strong> 50 minutos</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - 2026</p>
+        </div>
+    </footer>
+</body>
+</html>
