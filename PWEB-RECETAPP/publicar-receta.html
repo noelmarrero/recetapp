@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar receta - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/publicar-receta.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="index.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp</span>
+            </a>
+
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="favoritos.html">Favoritos</a>
+                <a href="publicar-receta.html">Publicar</a>
+                <a href="perfil.html">Perfil</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor publicar">
+        <h1>Publicar una receta</h1>
+        <p>Completá los datos de la receta.</p>
+
+        <form class="formulario-receta" action="perfil.html">
+            <div class="campo">
+                <label for="nombre-receta">Nombre de la receta</label>
+                <input type="text" id="nombre-receta" required>
+            </div>
+
+            <div class="campo">
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" rows="4" required></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="categoria-receta">Categoría</label>
+                <select id="categoria-receta">
+                    <option>Pastas</option>
+                    <option>Ensaladas</option>
+                    <option>Postres</option>
+                    <option>Otras</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="ingredientes">Ingredientes</label>
+                <textarea id="ingredientes" rows="6" placeholder="Escribí un ingrediente por línea" required></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="preparacion">Preparación</label>
+                <textarea id="preparacion" rows="7" placeholder="Explicá los pasos de la receta" required></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="tiempo">Tiempo de preparación</label>
+                <input type="text" id="tiempo" placeholder="Ejemplo: 30 minutos">
+            </div>
+
+            <div class="campo">
+                <label for="imagen">Imagen de la receta</label>
+                <input type="file" id="imagen" accept="image/*">
+            </div>
+
+            <button class="boton" type="submit">Publicar receta</button>
+        </form>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - 2026</p>
+        </div>
+    </footer>
+</body>
+</html>

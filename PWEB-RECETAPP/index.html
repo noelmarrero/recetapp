@@ -18,6 +18,8 @@
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="#recetas">Recetas</a>
+                <a href="favoritos.html">Favoritos</a>
+                <a href="publicar-receta.html">Publicar</a>
                 <a href="perfil.html">Perfil</a>
             </nav>
 
@@ -44,16 +46,29 @@
         <section class="contenedor seccion" id="recetas">
             <h2>Recetas destacadas</h2>
 
+            <div class="filtro-categorias">
+                <label for="categoria">Filtrar por categoría:</label>
+                <select id="categoria">
+                    <option>Todas</option>
+                    <option>Pastas</option>
+                    <option>Ensaladas</option>
+                    <option>Postres</option>
+                </select>
+            </div>
+
             <div class="lista-recetas">
                 <article class="receta">
                     <a href="receta.html">
-                    <img class="imagen-receta" src="imagenes/pasta.jpg" alt="Plato de pasta con salsa">
+                        <img class="imagen-receta" src="imagenes/pasta.jpg" alt="Plato de pasta con salsa">
+                    </a>
                     <div class="texto-receta">
-                        <h3>Pasta con salsa</h3>
+                        <h3>
+                            <a href="receta.html">Pasta con salsa</a>
+                        </h3>
                         <p>Una receta fácil para preparar en casa.</p>
                         <p><strong>Tiempo:</strong> 30 minutos</p>
+                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
                     </div>
-                    </a>
                 </article>
 
                 <article class="receta">
@@ -62,6 +77,7 @@
                         <h3>Ensalada completa</h3>
                         <p>Una opción fresca y rápida para el almuerzo.</p>
                         <p><strong>Tiempo:</strong> 15 minutos</p>
+                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
                     </div>
                 </article>
 
@@ -71,6 +87,7 @@
                         <h3>Torta de chocolate</h3>
                         <p>Una torta casera para la merienda.</p>
                         <p><strong>Tiempo:</strong> 50 minutos</p>
+                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
                     </div>
                 </article>
             </div>

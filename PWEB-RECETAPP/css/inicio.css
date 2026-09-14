@@ -43,6 +43,15 @@
     margin-bottom: 22px;
 }
 
+.filtro-categorias {
+    margin-bottom: 20px;
+}
+
+.filtro-categorias select {
+    padding: 7px;
+    margin-left: 5px;
+}
+
 .lista-recetas {
     display: flex;
     justify-content: space-between;
@@ -70,6 +79,13 @@
 
 .texto-receta p {
     margin-bottom: 8px;
+}
+
+.boton-guardar {
+    background-color: white;
+    color: #cf4428;
+    border: 1px solid #cf4428;
+    padding: 7px;
 }
 
 @media screen and (max-width: 700px) {

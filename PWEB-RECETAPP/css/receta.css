@@ -7,6 +7,11 @@
     color: #cf4428;
 }
 
+.autor {
+    color: #cf4428;
+    font-weight: bold;
+}
+
 .encabezado-receta {
     display: flex;
     margin-top: 20px;

@@ -18,6 +18,8 @@
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="index.html#recetas">Recetas</a>
+                <a href="favoritos.html">Favoritos</a>
+                <a href="publicar-receta.html">Publicar</a>
                 <a href="perfil.html">Perfil</a>
             </nav>
 
@@ -41,7 +43,7 @@
         <section class="recetas-perfil">
             <div class="titulo-perfil">
                 <h2>Mis recetas</h2>
-                <button class="boton">Nueva receta</button>
+                <a class="boton" href="publicar-receta.html">Nueva receta</a>
             </div>
 
             <a class="receta-publicada" href="receta.html">
@@ -49,6 +51,11 @@
                 <div>
                     <h3>Pasta con salsa casera</h3>
                     <p>Publicada el 2 de septiembre de 2026</p>
+                    <label for="estado-pasta">Estado:</label>
+                    <select id="estado-pasta">
+                        <option>Disponible</option>
+                        <option>No disponible</option>
+                    </select>
                 </div>
             </a>
 
@@ -57,6 +64,11 @@
                 <div>
                     <h3>Ensalada completa</h3>
                     <p>Publicada el 27 de agosto de 2026</p>
+                    <label for="estado-ensalada">Estado:</label>
+                    <select id="estado-ensalada">
+                        <option>Disponible</option>
+                        <option>No disponible</option>
+                    </select>
                 </div>
             </div>
         </section>
