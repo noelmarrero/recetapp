@@ -23,15 +23,22 @@
             <h1>Iniciar sesión</h1>
             <p class="descripcion-formulario">Ingresá los datos de tu cuenta.</p>
 
-            <form action="perfil.html">
+            <form id="formulario-login" action="perfil.html" novalidate>
                 <div class="campo">
                     <label for="correo">Correo electrónico</label>
                     <input type="email" id="correo" required>
+                    <p class="mensaje-error" id="error-correo"></p>
                 </div>
 
                 <div class="campo">
                     <label for="contrasena">Contraseña</label>
                     <input type="password" id="contrasena" required>
+                    <p class="mensaje-error" id="error-contrasena"></p>
+                </div>
+
+                <div class="mostrar-contrasena">
+                    <input type="checkbox" id="mostrar-contrasena">
+                    <label for="mostrar-contrasena">Mostrar contraseña</label>
                 </div>
 
                 <div class="recordar">
@@ -58,5 +65,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/login.js"></script>
 </body>
 </html>

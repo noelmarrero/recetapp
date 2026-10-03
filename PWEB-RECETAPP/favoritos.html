@@ -27,14 +27,14 @@
     <main class="contenedor favoritos">
         <h1>Mis recetas favoritas</h1>
 
-        <div class="lista-favoritos">
+        <div class="lista-favoritos" id="lista-favoritos">
             <article class="favorito">
                 <img src="imagenes/pasta.jpg" alt="Pasta con salsa">
                 <div>
                     <h2>Pasta con salsa</h2>
                     <p>Tiempo: 30 minutos</p>
                     <a href="receta.html">Ver receta</a>
-                    <button type="button">Quitar de favoritos</button>
+                    <button class="quitar-favorito" type="button">Quitar de favoritos</button>
                 </div>
             </article>
 
@@ -44,10 +44,12 @@
                     <h2>Torta de chocolate</h2>
                     <p>Tiempo: 50 minutos</p>
                     <a href="receta.html">Ver receta</a>
-                    <button type="button">Quitar de favoritos</button>
+                    <button class="quitar-favorito" type="button">Quitar de favoritos</button>
                 </div>
             </article>
         </div>
+
+        <p class="oculto" id="favoritos-vacios">Todavía no tenés recetas favoritas.</p>
     </main>
 
     <footer>
@@ -55,5 +57,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/favoritos.js"></script>
 </body>
 </html>

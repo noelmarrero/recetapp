@@ -47,7 +47,7 @@
                     <p><strong>Porciones:</strong> 2</p>
                 </div>
 
-                <button class="boton">Guardar receta</button>
+                <button class="boton" id="boton-guardar" type="button">Guardar receta</button>
             </div>
         </section>
 
@@ -76,6 +76,36 @@
                 </ol>
             </div>
         </section>
+
+        <section class="comentarios">
+            <h2>Comentarios</h2>
+
+            <div id="lista-comentarios">
+                <article class="comentario">
+                    <h3>María Pérez</h3>
+                    <p>La preparé para el almuerzo y quedó muy rica.</p>
+                </article>
+
+                <article class="comentario">
+                    <h3>Juan López</h3>
+                    <p>Fácil de seguir. Le agregué un poco de albahaca.</p>
+                </article>
+            </div>
+
+            <form class="formulario-comentario" id="formulario-comentario" novalidate>
+                <h3>Dejá tu comentario</h3>
+
+                <label for="nombre-comentario">Nombre</label>
+                <input type="text" id="nombre-comentario">
+                <p class="mensaje-error" id="error-nombre-comentario"></p>
+
+                <label for="texto-comentario">Comentario</label>
+                <textarea id="texto-comentario" rows="4"></textarea>
+                <p class="mensaje-error" id="error-texto-comentario"></p>
+
+                <button class="boton" type="submit">Publicar comentario</button>
+            </form>
+        </section>
     </main>
 
     <footer>
@@ -83,5 +113,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/receta.js"></script>
 </body>
 </html>

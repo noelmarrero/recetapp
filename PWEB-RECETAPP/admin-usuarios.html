@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar usuarios - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="admin.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp Admin</span>
+            </a>
+
+            <nav>
+                <a href="admin.html">Panel</a>
+                <a href="admin-recetas.html">Recetas</a>
+                <a href="admin-categorias.html">Categorías</a>
+            </nav>
+
+            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="contenedor panel-admin">
+        <a class="volver" href="admin.html">Volver al panel</a>
+        <h1>Administrar usuarios</h1>
+
+        <div class="filtro-admin">
+            <label for="filtro-usuario">Mostrar:</label>
+            <select id="filtro-usuario">
+                <option value="todos">Todos los usuarios</option>
+                <option value="si">Usuarios que publicaron</option>
+                <option value="no">Usuarios que no publicaron</option>
+            </select>
+        </div>
+
+        <section class="lista-admin">
+            <article class="usuario-admin" data-publico="si">
+                <div>
+                    <h2>Noel Marrero</h2>
+                    <p>@cocina_con_noel</p>
+                    <p>2 recetas publicadas</p>
+                </div>
+                <div>
+                    <label for="estado-noel">Cuenta:</label>
+                    <select class="estado-usuario" id="estado-noel" data-usuario="Noel Marrero">
+                        <option>Activa</option>
+                        <option>Inactiva</option>
+                    </select>
+                </div>
+            </article>
+
+            <article class="usuario-admin" data-publico="si">
+                <div>
+                    <h2>María Pérez</h2>
+                    <p>@cocina_maria</p>
+                    <p>1 receta publicada</p>
+                </div>
+                <div>
+                    <label for="estado-maria">Cuenta:</label>
+                    <select class="estado-usuario" id="estado-maria" data-usuario="María Pérez">
+                        <option>Activa</option>
+                        <option>Inactiva</option>
+                    </select>
+                </div>
+            </article>
+
+            <article class="usuario-admin" data-publico="no">
+                <div>
+                    <h2>Juan López</h2>
+                    <p>@juan123</p>
+                    <p>Sin recetas publicadas</p>
+                </div>
+                <div>
+                    <label for="estado-juan">Cuenta:</label>
+                    <select class="estado-usuario" id="estado-juan" data-usuario="Juan López">
+                        <option>Activa</option>
+                        <option>Inactiva</option>
+                    </select>
+                </div>
+            </article>
+        </section>
+
+        <p class="mensaje-exito" id="mensaje-usuario"></p>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - Panel de administrador</p>
+        </div>
+    </footer>
+
+    <script src="js/admin-usuarios.js"></script>
+</body>
+</html>

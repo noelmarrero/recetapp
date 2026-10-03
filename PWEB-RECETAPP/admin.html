@@ -16,9 +16,8 @@
             </a>
 
             <nav>
-                <a href="#recetas-admin">Recetas</a>
-                <a href="#categorias-admin">Categorías</a>
-                <a href="#usuarios-admin">Usuarios</a>
+                <a href="admin.html">Panel</a>
+                <a href="index.html">Ver sitio</a>
             </nav>
 
             <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
@@ -27,95 +26,27 @@
 
     <main class="contenedor panel-admin">
         <h1>Panel de administrador</h1>
-        <p class="descripcion-admin">Desde este panel se administran las recetas, categorías y usuarios.</p>
+        <p class="descripcion-admin">Elegí la sección que querés administrar.</p>
 
-        <section class="seccion-admin" id="recetas-admin">
-            <h2>Recetas publicadas</h2>
+        <div class="opciones-admin">
+            <section class="opcion-admin">
+                <h2>Recetas</h2>
+                <p>Revisar recetas, filtrarlas y cambiar su estado.</p>
+                <a class="boton" href="admin-recetas.html">Administrar recetas</a>
+            </section>
 
-            <div class="filtro-admin"> 
-                <label for="filtro-receta">Filtrar por categoría:</label>
-                <select id="filtro-receta">
-                    <option>Todas</option>
-                    <option>Pastas</option>
-                    <option>Ensaladas</option>
-                    <option>Postres</option>
-                </select>
-            </div>
+            <section class="opcion-admin">
+                <h2>Categorías</h2>
+                <p>Crear y eliminar categorías de recetas.</p>
+                <a class="boton" href="admin-categorias.html">Administrar categorías</a>
+            </section>
 
-            <div class="fila-admin">
-                <img src="imagenes/pasta.jpg" alt="Pasta con salsa">
-                <div class="datos-admin">
-                    <h3>Pasta con salsa</h3>
-                    <p>Usuario: cocina_con_noel</p>
-                </div>
-                <select>
-                    <option>En revisión</option>
-                    <option>Disponible</option>
-                    <option>No disponible</option>
-                </select>
-            </div>
-
-            <div class="fila-admin">
-                <img src="imagenes/torta.jpg" alt="Torta de chocolate">
-                <div class="datos-admin">
-                    <h3>Torta de chocolate</h3>
-                    <p>Usuario: cocina_maria</p>
-                </div>
-                <select>
-                    <option>Disponible</option>
-                    <option>En revisión</option>
-                    <option>No disponible</option>
-                </select>
-            </div>
-        </section>
-
-        <section class="seccion-admin" id="categorias-admin">
-            <h2>Categorías</h2>
-
-            <form class="formulario-categoria">
-                <label for="nueva-categoria">Nueva categoría:</label>
-                <input type="text" id="nueva-categoria">
-                <button class="boton" type="submit">Crear categoría</button>
-            </form>
-
-            <ul class="lista-categorias">
-                <li>Pastas</li>
-                <li>Ensaladas</li>
-                <li>Postres</li>
-                <li>Comidas rápidas</li>
-            </ul>
-        </section>
-
-        <section class="seccion-admin" id="usuarios-admin">
-            <h2>Usuarios</h2>
-
-            <div class="filtro-admin">
-                <label for="filtro-usuario">Mostrar:</label>
-                <select id="filtro-usuario">
-                    <option>Todos los usuarios</option>
-                    <option>Usuarios que publicaron</option>
-                    <option>Usuarios que no publicaron</option>
-                </select>
-            </div>
-
-            <div class="usuario-admin">
-                <p><strong>Noel Marrero</strong></p>
-                <p>cocina_con_noel</p>
-                <p>2 recetas publicadas</p>
-            </div>
-
-            <div class="usuario-admin">
-                <p><strong>María Pérez</strong></p>
-                <p>cocina_maria</p>
-                <p>1 receta publicada</p>
-            </div>
-
-            <div class="usuario-admin">
-                <p><strong>Juan López</strong></p>
-                <p>juan123</p>
-                <p>Sin recetas publicadas</p>
-            </div>
-        </section>
+            <section class="opcion-admin">
+                <h2>Usuarios</h2>
+                <p>Ver usuarios y cambiar si están activos.</p>
+                <a class="boton" href="admin-usuarios.html">Administrar usuarios</a>
+            </section>
+        </div>
     </main>
 
     <footer>

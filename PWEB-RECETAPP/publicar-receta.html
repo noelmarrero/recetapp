@@ -28,15 +28,17 @@
         <h1>Publicar una receta</h1>
         <p>Completá los datos de la receta.</p>
 
-        <form class="formulario-receta" action="perfil.html">
+        <form class="formulario-receta" id="formulario-receta" action="perfil.html" novalidate>
             <div class="campo">
                 <label for="nombre-receta">Nombre de la receta</label>
                 <input type="text" id="nombre-receta" required>
+                <p class="mensaje-error" id="error-nombre-receta"></p>
             </div>
 
             <div class="campo">
                 <label for="descripcion">Descripción</label>
                 <textarea id="descripcion" rows="4" required></textarea>
+                <p class="mensaje-error" id="error-descripcion"></p>
             </div>
 
             <div class="campo">
@@ -52,16 +54,19 @@
             <div class="campo">
                 <label for="ingredientes">Ingredientes</label>
                 <textarea id="ingredientes" rows="6" placeholder="Escribí un ingrediente por línea" required></textarea>
+                <p class="mensaje-error" id="error-ingredientes"></p>
             </div>
 
             <div class="campo">
                 <label for="preparacion">Preparación</label>
                 <textarea id="preparacion" rows="7" placeholder="Explicá los pasos de la receta" required></textarea>
+                <p class="mensaje-error" id="error-preparacion"></p>
             </div>
 
             <div class="campo">
                 <label for="tiempo">Tiempo de preparación</label>
                 <input type="text" id="tiempo" placeholder="Ejemplo: 30 minutos">
+                <p class="mensaje-error" id="error-tiempo"></p>
             </div>
 
             <div class="campo">
@@ -78,5 +83,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/publicar-receta.js"></script>
 </body>
 </html>

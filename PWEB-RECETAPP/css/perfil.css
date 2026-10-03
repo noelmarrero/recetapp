@@ -67,6 +67,10 @@
     padding: 4px;
 }
 
+.receta-publicada h3 a:hover {
+    color: #cf4428;
+}
+
 @media screen and (max-width: 700px) {
     .datos-perfil {
         flex-direction: column;

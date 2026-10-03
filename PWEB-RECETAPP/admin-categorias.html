@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar categorías - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="admin.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp Admin</span>
+            </a>
+
+            <nav>
+                <a href="admin.html">Panel</a>
+                <a href="admin-recetas.html">Recetas</a>
+                <a href="admin-usuarios.html">Usuarios</a>
+            </nav>
+
+            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="contenedor panel-admin">
+        <a class="volver" href="admin.html">Volver al panel</a>
+        <h1>Administrar categorías</h1>
+
+        <form class="formulario-categoria" id="formulario-categoria" novalidate>
+            <label for="nueva-categoria">Nueva categoría:</label>
+            <input type="text" id="nueva-categoria">
+            <button class="boton" type="submit">Crear categoría</button>
+            <p class="mensaje-error" id="error-categoria"></p>
+        </form>
+
+        <ul class="lista-categorias" id="lista-categorias">
+            <li><span>Pastas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
+            <li><span>Ensaladas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
+            <li><span>Postres</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
+            <li><span>Comidas rápidas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
+        </ul>
+
+        <p class="mensaje-exito" id="mensaje-categoria"></p>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - Panel de administrador</p>
+        </div>
+    </footer>
+
+    <script src="js/admin-categorias.js"></script>
+</body>
+</html>

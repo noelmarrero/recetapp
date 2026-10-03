@@ -3,39 +3,71 @@
     padding-bottom: 35px;
 }
 
+.panel-admin h1 {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
 .descripcion-admin {
-    margin-top: 8px;
+    margin-bottom: 25px;
 }
 
-.seccion-admin {
+.opciones-admin {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.opcion-admin {
+    width: 31%;
     border: 1px solid #d7c0b0;
+    background-color: #fff4ea;
     padding: 20px;
-    margin-top: 25px;
 }
 
-.seccion-admin h2 {
+.opcion-admin h2 {
+    margin-bottom: 10px;
+}
+
+.opcion-admin p {
+    min-height: 65px;
     margin-bottom: 15px;
 }
 
-.filtro-admin {
-    margin-bottom: 16px;
+.volver {
+    color: #cf4428;
 }
 
-.filtro-admin select {
+.filtro-admin {
+    margin: 22px 0;
+}
+
+.filtro-admin select,
+.fila-admin select,
+.usuario-admin select {
     padding: 7px;
     margin-left: 5px;
+}
+
+.lista-admin {
+    border: 1px solid #d7c0b0;
 }
 
 .fila-admin {
     display: flex;
     align-items: center;
-    border-top: 1px solid #d7c0b0;
-    padding: 12px 0;
+    padding: 14px;
+    border-bottom: 1px solid #d7c0b0;
+}
+
+.fila-admin:last-child,
+.usuario-admin:last-child {
+    border-bottom: none;
 }
 
 .fila-admin img {
-    width: 85px;
-    height: 65px;
+    width: 95px;
+    height: 75px;
     object-fit: cover;
     margin-right: 15px;
 }
@@ -44,35 +76,76 @@
     flex-grow: 1;
 }
 
-.fila-admin select {
-    padding: 7px;
+.datos-admin h2,
+.usuario-admin h2 {
+    font-size: 19px;
+    margin-bottom: 5px;
 }
 
 .formulario-categoria {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
+    border: 1px solid #d7c0b0;
+    background-color: #fff4ea;
+    padding: 18px;
+    margin: 22px 0;
+}
+
+.formulario-categoria label {
+    font-weight: bold;
 }
 
 .formulario-categoria input {
-    padding: 8px;
+    padding: 9px;
     margin: 0 8px;
     border: 1px solid #a99487;
 }
 
 .lista-categorias {
-    margin-left: 20px;
+    list-style: none;
+    width: 600px;
+    max-width: 100%;
+}
+
+.lista-categorias li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d7c0b0;
+    border-bottom: none;
+    padding: 12px;
+}
+
+.lista-categorias li:last-child {
+    border-bottom: 1px solid #d7c0b0;
+}
+
+.eliminar-categoria {
+    background-color: white;
+    color: #cf4428;
+    border: 1px solid #cf4428;
+    padding: 6px;
+    cursor: pointer;
 }
 
 .usuario-admin {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #d7c0b0;
-    padding: 12px 0;
+    align-items: center;
+    padding: 14px;
+    border-bottom: 1px solid #d7c0b0;
 }
 
 @media screen and (max-width: 700px) {
-    .fila-admin {
+    .opcion-admin {
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .opcion-admin p {
+        min-height: 0;
+    }
+
+    .fila-admin,
+    .usuario-admin {
         align-items: flex-start;
         flex-direction: column;
     }
@@ -81,21 +154,19 @@
         margin-bottom: 10px;
     }
 
-    .fila-admin select {
-        margin-top: 10px;
+    .fila-admin div:last-child,
+    .usuario-admin div:last-child {
+        margin-top: 12px;
     }
 
-    .formulario-categoria {
-        align-items: flex-start;
-        flex-direction: column;
+    .formulario-categoria label,
+    .formulario-categoria input,
+    .formulario-categoria button {
+        display: block;
+        width: 100%;
     }
 
     .formulario-categoria input {
         margin: 8px 0;
-        width: 100%;
-    }
-
-    .usuario-admin {
-        flex-direction: column;
     }
 }

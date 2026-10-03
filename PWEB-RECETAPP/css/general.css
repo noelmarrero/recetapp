@@ -34,7 +34,6 @@ header {
 }
 
 .header-contenido {
-    
     min-height: 70px;
     display: flex;
     align-items: center;
@@ -79,12 +78,45 @@ nav a:hover {
     cursor: pointer;
 }
 
+.boton:hover {
+    background-color: #a9341f;
+}
+
 .boton-secundario {
     background-color: white;
     color: #cf4428;
     border: 1px solid #cf4428;
     padding: 8px 13px;
     margin-right: 8px;
+}
+
+.mensaje-error {
+    color: #b00020;
+    font-size: 14px;
+    min-height: 18px;
+    margin-top: 4px;
+}
+
+.mensaje-exito {
+    color: #287a36;
+    margin-top: 14px;
+}
+
+.campo-error {
+    border: 1px solid #b00020 !important;
+}
+
+.mostrar-contrasena {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.mostrar-contrasena label {
+    margin-left: 6px;
+}
+
+.oculto {
+    display: none;
 }
 
 footer {
@@ -103,6 +135,8 @@ footer {
 
     nav {
         margin: 12px 0;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .botones-header {

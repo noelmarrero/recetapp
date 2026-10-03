@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar recetas - Recetapp</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <div class="contenedor header-contenido">
+            <a class="logo" href="admin.html">
+                <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
+                <span>Recetapp Admin</span>
+            </a>
+
+            <nav>
+                <a href="admin.html">Panel</a>
+                <a href="admin-categorias.html">Categorías</a>
+                <a href="admin-usuarios.html">Usuarios</a>
+            </nav>
+
+            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+        </div>
+    </header>
+
+    <main class="contenedor panel-admin">
+        <a class="volver" href="admin.html">Volver al panel</a>
+        <h1>Administrar recetas</h1>
+
+        <div class="filtro-admin">
+            <label for="filtro-receta">Filtrar por categoría:</label>
+            <select id="filtro-receta">
+                <option value="todas">Todas</option>
+                <option value="pastas">Pastas</option>
+                <option value="ensaladas">Ensaladas</option>
+                <option value="postres">Postres</option>
+            </select>
+        </div>
+
+        <section class="lista-admin" id="lista-recetas-admin">
+            <article class="fila-admin receta-admin" data-categoria="pastas">
+                <img src="imagenes/pasta.jpg" alt="Pasta con salsa">
+                <div class="datos-admin">
+                    <h2>Pasta con salsa</h2>
+                    <p>Usuario: cocina_con_noel</p>
+                    <p>Categoría: Pastas</p>
+                </div>
+                <div>
+                    <label for="estado-pasta-admin">Estado:</label>
+                    <select class="estado-admin" id="estado-pasta-admin" data-receta="Pasta con salsa">
+                        <option>En revisión</option>
+                        <option>Disponible</option>
+                        <option>No disponible</option>
+                    </select>
+                </div>
+            </article>
+
+            <article class="fila-admin receta-admin" data-categoria="postres">
+                <img src="imagenes/torta.jpg" alt="Torta de chocolate">
+                <div class="datos-admin">
+                    <h2>Torta de chocolate</h2>
+                    <p>Usuario: cocina_maria</p>
+                    <p>Categoría: Postres</p>
+                </div>
+                <div>
+                    <label for="estado-torta-admin">Estado:</label>
+                    <select class="estado-admin" id="estado-torta-admin" data-receta="Torta de chocolate">
+                        <option>Disponible</option>
+                        <option>En revisión</option>
+                        <option>No disponible</option>
+                    </select>
+                </div>
+            </article>
+
+            <article class="fila-admin receta-admin" data-categoria="ensaladas">
+                <img src="imagenes/ensalada.jpg" alt="Ensalada completa">
+                <div class="datos-admin">
+                    <h2>Ensalada completa</h2>
+                    <p>Usuario: juan123</p>
+                    <p>Categoría: Ensaladas</p>
+                </div>
+                <div>
+                    <label for="estado-ensalada-admin">Estado:</label>
+                    <select class="estado-admin" id="estado-ensalada-admin" data-receta="Ensalada completa">
+                        <option>En revisión</option>
+                        <option>Disponible</option>
+                        <option>No disponible</option>
+                    </select>
+                </div>
+            </article>
+        </section>
+
+        <p class="oculto" id="sin-recetas-admin">No hay recetas en esta categoría.</p>
+        <p class="mensaje-exito" id="mensaje-receta-admin"></p>
+    </main>
+
+    <footer>
+        <div class="contenedor">
+            <p>Recetapp - Panel de administrador</p>
+        </div>
+    </footer>
+
+    <script src="js/admin-recetas.js"></script>
+</body>
+</html>

@@ -37,7 +37,7 @@
                 <p>Me gusta compartir recetas fáciles.</p>
             </div>
 
-            <button class="boton">Editar perfil</button>
+            <button class="boton" id="editar-perfil" type="button">Editar perfil</button>
         </section>
 
         <section class="recetas-perfil">
@@ -46,21 +46,18 @@
                 <a class="boton" href="publicar-receta.html">Nueva receta</a>
             </div>
 
-            <a class="receta-publicada" href="receta.html">
+            <div class="receta-publicada">
                 <img class="imagen-pequena" src="imagenes/pasta.jpg" alt="Pasta con salsa casera">
                 <div>
-                    <h3>Pasta con salsa casera</h3>
+                    <h3><a href="receta.html">Pasta con salsa casera</a></h3>
                     <p>Publicada el 2 de septiembre de 2026</p>
                     <label for="estado-pasta">Estado:</label>
-                    <select id="estado-pasta">
+                    <select class="estado-receta" id="estado-pasta" data-receta="Pasta con salsa casera">
                         <option>Disponible</option>
                         <option>No disponible</option>
-                        <option>revision</option>
-                        
-
                     </select>
                 </div>
-            </a>
+            </div>
 
             <div class="receta-publicada">
                 <img class="imagen-pequena" src="imagenes/ensalada.jpg" alt="Ensalada completa">
@@ -68,13 +65,14 @@
                     <h3>Ensalada completa</h3>
                     <p>Publicada el 27 de agosto de 2026</p>
                     <label for="estado-ensalada">Estado:</label>
-                    <select id="estado-ensalada">
+                    <select class="estado-receta" id="estado-ensalada" data-receta="Ensalada completa">
                         <option>Disponible</option>
                         <option>No disponible</option>
-                        <option>en revision</option>
                     </select>
                 </div>
             </div>
+
+            <p class="mensaje-exito" id="mensaje-estado"></p>
         </section>
     </main>
 
@@ -83,5 +81,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/perfil.js"></script>
 </body>
 </html>

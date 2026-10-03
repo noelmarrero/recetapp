@@ -36,8 +36,8 @@
                 <h1>Encontrá una receta para hoy</h1>
                 <p>Descubrí recetas fáciles y compartí tus comidas favoritas.</p>
 
-                <form class="buscador">
-                    <input type="text" placeholder="Buscar una receta">
+                <form class="buscador" id="formulario-busqueda">
+                    <input type="text" id="buscar-receta" placeholder="Buscar una receta">
                     <button type="submit">Buscar</button>
                 </form>
             </div>
@@ -49,15 +49,15 @@
             <div class="filtro-categorias">
                 <label for="categoria">Filtrar por categoría:</label>
                 <select id="categoria">
-                    <option>Todas</option>
-                    <option>Pastas</option>
-                    <option>Ensaladas</option>
-                    <option>Postres</option>
+                    <option value="todas">Todas</option>
+                    <option value="pastas">Pastas</option>
+                    <option value="ensaladas">Ensaladas</option>
+                    <option value="postres">Postres</option>
                 </select>
             </div>
 
             <div class="lista-recetas">
-                <article class="receta">
+                <article class="receta" data-categoria="pastas" data-nombre="pasta con salsa">
                     <a href="receta.html">
                         <img class="imagen-receta" src="imagenes/pasta.jpg" alt="Plato de pasta con salsa">
                     </a>
@@ -71,7 +71,7 @@
                     </div>
                 </article>
 
-                <article class="receta">
+                <article class="receta" data-categoria="ensaladas" data-nombre="ensalada completa">
                     <img class="imagen-receta" src="imagenes/ensalada.jpg" alt="Ensalada completa">
                     <div class="texto-receta">
                         <h3>Ensalada completa</h3>
@@ -81,7 +81,7 @@
                     </div>
                 </article>
 
-                <article class="receta">
+                <article class="receta" data-categoria="postres" data-nombre="torta de chocolate">
                     <img class="imagen-receta" src="imagenes/torta.jpg" alt="Torta de chocolate">
                     <div class="texto-receta">
                         <h3>Torta de chocolate</h3>
@@ -91,6 +91,8 @@
                     </div>
                 </article>
             </div>
+
+            <p class="sin-resultados oculto" id="sin-resultados">No se encontraron recetas.</p>
         </section>
     </main>
 
@@ -99,5 +101,7 @@
             <p>Recetapp - 2026</p>
         </div>
     </footer>
+
+    <script src="js/inicio.js"></script>
 </body>
 </html>

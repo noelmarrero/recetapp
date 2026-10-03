@@ -86,6 +86,16 @@
     color: #cf4428;
     border: 1px solid #cf4428;
     padding: 7px;
+    cursor: pointer;
+}
+
+.boton-guardar:hover {
+    background-color: #fff0e3;
+}
+
+.sin-resultados {
+    margin-top: 20px;
+    color: #b00020;
 }
 
 @media screen and (max-width: 700px) {
