@@ -1,6 +1,7 @@
 .favoritos {
     padding-top: 35px;
     padding-bottom: 35px;
+    
 }
 
 .favoritos h1 {
@@ -9,6 +10,7 @@
 
 .lista-favoritos {
     display: flex;
+
     flex-wrap: wrap;
 }
 
