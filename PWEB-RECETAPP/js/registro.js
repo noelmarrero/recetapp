@@ -1,6 +1,8 @@
 var formularioRegistro = document.getElementById("formulario-registro");
 var mostrarContrasenas = document.getElementById("mostrar-contrasena");
 
+var expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 formularioRegistro.addEventListener("submit", function(evento) {
     evento.preventDefault();
 
@@ -9,7 +11,9 @@ formularioRegistro.addEventListener("submit", function(evento) {
     var correo = document.getElementById("correo");
     var usuario = document.getElementById("usuario");
     var contrasena = document.getElementById("contrasena");
-    var repetirContrasena = document.getElementById("repetir-contrasena");
+    var repetirContrasena =
+        document.getElementById("repetir-contrasena");
+
     var formularioValido = true;
 
     document.getElementById("error-nombre").textContent = "";
@@ -27,45 +31,61 @@ formularioRegistro.addEventListener("submit", function(evento) {
     repetirContrasena.classList.remove("campo-error");
 
     if (nombre.value.trim() === "") {
-        document.getElementById("error-nombre").textContent = "Ingresá tu nombre.";
+        document.getElementById("error-nombre").textContent =
+            "Ingresá tu nombre.";
+
         nombre.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (apellido.value.trim() === "") {
-        document.getElementById("error-apellido").textContent = "Ingresá tu apellido.";
+        document.getElementById("error-apellido").textContent =
+            "Ingresá tu apellido.";
+
         apellido.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (correo.value.trim() === "") {
-        document.getElementById("error-correo").textContent = "Ingresá tu correo electrónico.";
+        document.getElementById("error-correo").textContent =
+            "Ingresá tu correo electrónico.";
+
         correo.classList.add("campo-error");
         formularioValido = false;
-    } else if (correo.value.indexOf("@") === -1 || correo.value.indexOf(".") === -1) {
-        document.getElementById("error-correo").textContent = "Ingresá un correo válido.";
+    } else if (!expresionCorreo.test(correo.value.trim())) {
+        document.getElementById("error-correo").textContent =
+            "Ingresá un correo válido.";
+
         correo.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (usuario.value.trim() === "") {
-        document.getElementById("error-usuario").textContent = "Elegí un nombre de usuario.";
+        document.getElementById("error-usuario").textContent =
+            "Elegí un nombre de usuario.";
+
         usuario.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (contrasena.value.length < 6) {
-        document.getElementById("error-contrasena").textContent = "Usá al menos 6 caracteres.";
+        document.getElementById("error-contrasena").textContent =
+            "Usá al menos 6 caracteres.";
+
         contrasena.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (repetirContrasena.value === "") {
-        document.getElementById("error-repetir").textContent = "Repetí la contraseña.";
+        document.getElementById("error-repetir").textContent =
+            "Repetí la contraseña.";
+
         repetirContrasena.classList.add("campo-error");
         formularioValido = false;
     } else if (contrasena.value !== repetirContrasena.value) {
-        document.getElementById("error-repetir").textContent = "Las contraseñas no coinciden.";
+        document.getElementById("error-repetir").textContent =
+            "Las contraseñas no coinciden.";
+
         repetirContrasena.classList.add("campo-error");
         formularioValido = false;
     }
@@ -78,7 +98,8 @@ formularioRegistro.addEventListener("submit", function(evento) {
 
 mostrarContrasenas.addEventListener("change", function() {
     var contrasena = document.getElementById("contrasena");
-    var repetirContrasena = document.getElementById("repetir-contrasena");
+    var repetirContrasena =
+        document.getElementById("repetir-contrasena");
 
     if (mostrarContrasenas.checked === true) {
         contrasena.type = "text";
