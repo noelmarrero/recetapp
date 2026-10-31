@@ -1,5 +1,4 @@
 var filtroRecetasAdmin = document.getElementById("filtro-receta");
-var estadosAdmin = document.getElementsByClassName("estado-admin");
 
 filtroRecetasAdmin.addEventListener("change", function() {
     var recetas = document.getElementsByClassName("receta-admin");
@@ -23,10 +22,3 @@ filtroRecetasAdmin.addEventListener("change", function() {
         document.getElementById("sin-recetas-admin").classList.add("oculto");
     }
 });
-
-for (var i = 0; i < estadosAdmin.length; i++) {
-    estadosAdmin[i].addEventListener("change", function() {
-        var nombreReceta = this.getAttribute("data-receta");
-        document.getElementById("mensaje-receta-admin").textContent = "El estado de " + nombreReceta + " cambió a " + this.value + ".";
-    });
-}

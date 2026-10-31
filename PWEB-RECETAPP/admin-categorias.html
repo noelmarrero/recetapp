@@ -14,14 +14,12 @@
                 <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
                 <span>Recetapp Admin</span>
             </a>
-
             <nav>
                 <a href="admin.html">Panel</a>
                 <a href="admin-recetas.html">Recetas</a>
                 <a href="admin-usuarios.html">Usuarios</a>
             </nav>
-
-            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+            <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
@@ -29,29 +27,31 @@
         <a class="volver" href="admin.html">Volver al panel</a>
         <h1>Administrar categorías</h1>
 
-        <form class="formulario-categoria" id="formulario-categoria" novalidate>
+        {% for mensaje in get_flashed_messages() %}
+            <p class="mensaje-error">{{ mensaje }}</p>
+        {% endfor %}
+
+        <form class="formulario-categoria" id="formulario-categoria"
+              action="admin-categorias.html" method="POST" novalidate>
             <label for="nueva-categoria">Nueva categoría:</label>
-            <input type="text" id="nueva-categoria">
+            <input type="text" id="nueva-categoria" name="nombre">
             <button class="boton" type="submit">Crear categoría</button>
             <p class="mensaje-error" id="error-categoria"></p>
         </form>
 
-        <ul class="lista-categorias" id="lista-categorias">
-            <li><span>Pastas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
-            <li><span>Ensaladas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
-            <li><span>Postres</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
-            <li><span>Comidas rápidas</span><button class="eliminar-categoria" type="button">Eliminar</button></li>
+        <ul class="lista-categorias">
+            {% for categoria in categorias %}
+                <li>
+                    <span>{{ categoria.nombre }}</span>
+                    <form action="admin/categoria/{{ categoria.id }}/eliminar" method="POST">
+                        <button class="eliminar-categoria" type="submit">Eliminar</button>
+                    </form>
+                </li>
+            {% endfor %}
         </ul>
-
-        <p class="mensaje-exito" id="mensaje-categoria"></p>
     </main>
 
-    <footer>
-        <div class="contenedor">
-            <p>Recetapp - Panel de administrador</p>
-        </div>
-    </footer>
-
+    <footer><div class="contenedor"><p>Recetapp - Panel de administrador</p></div></footer>
     <script src="js/admin-categorias.js"></script>
 </body>
 </html>

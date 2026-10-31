@@ -1,5 +1,4 @@
 var filtroUsuarios = document.getElementById("filtro-usuario");
-var estadosUsuario = document.getElementsByClassName("estado-usuario");
 
 filtroUsuarios.addEventListener("change", function() {
     var usuarios = document.getElementsByClassName("usuario-admin");
@@ -15,10 +14,3 @@ filtroUsuarios.addEventListener("change", function() {
         }
     }
 });
-
-for (var i = 0; i < estadosUsuario.length; i++) {
-    estadosUsuario[i].addEventListener("change", function() {
-        var nombreUsuario = this.getAttribute("data-usuario");
-        document.getElementById("mensaje-usuario").textContent = "La cuenta de " + nombreUsuario + " ahora está " + this.value.toLowerCase() + ".";
-    });
-}

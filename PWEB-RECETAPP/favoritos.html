@@ -14,50 +14,42 @@
                 <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
                 <span>Recetapp</span>
             </a>
-
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="favoritos.html">Favoritos</a>
                 <a href="publicar-receta.html">Publicar</a>
                 <a href="perfil.html">Perfil</a>
             </nav>
+            <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
     <main class="contenedor favoritos">
         <h1>Mis recetas favoritas</h1>
 
-        <div class="lista-favoritos" id="lista-favoritos">
-            <article class="favorito">
-                <img src="imagenes/pasta.jpg" alt="Pasta con salsa">
-                <div>
-                    <h2>Pasta con salsa</h2>
-                    <p>Tiempo: 30 minutos</p>
-                    <a href="receta.html">Ver receta</a>
-                    <button class="quitar-favorito" type="button">Quitar de favoritos</button>
-                </div>
-            </article>
+        <div class="lista-favoritos">
+            {% for receta in recetas %}
+                <article class="favorito">
+                    <img src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}" alt="{{ receta.nombre }}">
+                    <div>
+                        <h2>{{ receta.nombre }}</h2>
+                        <p>Tiempo: {{ receta.tiempo }} minutos</p>
+                        <a href="receta.html?id={{ receta.id }}">Ver receta</a>
 
-            <article class="favorito">
-                <img src="imagenes/torta.jpg" alt="Torta de chocolate">
-                <div>
-                    <h2>Torta de chocolate</h2>
-                    <p>Tiempo: 50 minutos</p>
-                    <a href="receta.html">Ver receta</a>
-                    <button class="quitar-favorito" type="button">Quitar de favoritos</button>
-                </div>
-            </article>
+                        <form action="favorito/{{ receta.id }}" method="POST">
+                            <input type="hidden" name="destino" value="/favoritos.html">
+                            <button type="submit">Quitar de favoritos</button>
+                        </form>
+                    </div>
+                </article>
+            {% endfor %}
         </div>
 
-        <p class="oculto" id="favoritos-vacios">Todavía no tenés recetas favoritas.</p>
+        {% if recetas|length == 0 %}
+            <p>Todavía no tenés recetas favoritas.</p>
+        {% endif %}
     </main>
 
-    <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
-    </footer>
-
-    <script src="js/favoritos.js"></script>
+    <footer><div class="contenedor"><p>Recetapp - 2026</p></div></footer>
 </body>
 </html>

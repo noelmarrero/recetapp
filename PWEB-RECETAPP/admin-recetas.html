@@ -14,14 +14,12 @@
                 <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
                 <span>Recetapp Admin</span>
             </a>
-
             <nav>
                 <a href="admin.html">Panel</a>
                 <a href="admin-categorias.html">Categorías</a>
                 <a href="admin-usuarios.html">Usuarios</a>
             </nav>
-
-            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+            <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
@@ -33,75 +31,39 @@
             <label for="filtro-receta">Filtrar por categoría:</label>
             <select id="filtro-receta">
                 <option value="todas">Todas</option>
-                <option value="pastas">Pastas</option>
-                <option value="ensaladas">Ensaladas</option>
-                <option value="postres">Postres</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                {% endfor %}
             </select>
         </div>
 
         <section class="lista-admin" id="lista-recetas-admin">
-            <article class="fila-admin receta-admin" data-categoria="pastas">
-                <img src="imagenes/pasta.jpg" alt="Pasta con salsa">
-                <div class="datos-admin">
-                    <h2>Pasta con salsa</h2>
-                    <p>Usuario: cocina_con_noel</p>
-                    <p>Categoría: Pastas</p>
-                </div>
-                <div>
-                    <label for="estado-pasta-admin">Estado:</label>
-                    <select class="estado-admin" id="estado-pasta-admin" data-receta="Pasta con salsa">
-                        <option>En revisión</option>
-                        <option>Disponible</option>
-                        <option>No disponible</option>
-                    </select>
-                </div>
-            </article>
-
-            <article class="fila-admin receta-admin" data-categoria="postres">
-                <img src="imagenes/torta.jpg" alt="Torta de chocolate">
-                <div class="datos-admin">
-                    <h2>Torta de chocolate</h2>
-                    <p>Usuario: cocina_maria</p>
-                    <p>Categoría: Postres</p>
-                </div>
-                <div>
-                    <label for="estado-torta-admin">Estado:</label>
-                    <select class="estado-admin" id="estado-torta-admin" data-receta="Torta de chocolate">
-                        <option>Disponible</option>
-                        <option>En revisión</option>
-                        <option>No disponible</option>
-                    </select>
-                </div>
-            </article>
-
-            <article class="fila-admin receta-admin" data-categoria="ensaladas">
-                <img src="imagenes/ensalada.jpg" alt="Ensalada completa">
-                <div class="datos-admin">
-                    <h2>Ensalada completa</h2>
-                    <p>Usuario: juan123</p>
-                    <p>Categoría: Ensaladas</p>
-                </div>
-                <div>
-                    <label for="estado-ensalada-admin">Estado:</label>
-                    <select class="estado-admin" id="estado-ensalada-admin" data-receta="Ensalada completa">
-                        <option>En revisión</option>
-                        <option>Disponible</option>
-                        <option>No disponible</option>
-                    </select>
-                </div>
-            </article>
+            {% for receta in recetas %}
+                <article class="fila-admin receta-admin" data-categoria="{{ receta.id_categoria }}">
+                    <img src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}" alt="{{ receta.nombre }}">
+                    <div class="datos-admin">
+                        <h2>{{ receta.nombre }}</h2>
+                        <p>Usuario: {{ receta.autor_usuario }}</p>
+                        <p>Categoría: {{ receta.categoria }}</p>
+                    </div>
+                    <form action="admin/receta/{{ receta.id }}/estado" method="POST">
+                        <label for="estado-receta-{{ receta.id }}">Estado:</label>
+                        <select class="estado-admin" id="estado-receta-{{ receta.id }}"
+                                name="estado" onchange="this.form.submit()">
+                            <option value="en_revision" {% if receta.estado == 'en_revision' %}selected{% endif %}>En revisión</option>
+                            <option value="disponible" {% if receta.estado == 'disponible' %}selected{% endif %}>Disponible</option>
+                            <option value="no_disponible" {% if receta.estado == 'no_disponible' %}selected{% endif %}>No disponible</option>
+                        </select>
+                    </form>
+                </article>
+            {% endfor %}
         </section>
 
+        {% if recetas|length == 0 %}<p>No hay recetas cargadas.</p>{% endif %}
         <p class="oculto" id="sin-recetas-admin">No hay recetas en esta categoría.</p>
-        <p class="mensaje-exito" id="mensaje-receta-admin"></p>
     </main>
 
-    <footer>
-        <div class="contenedor">
-            <p>Recetapp - Panel de administrador</p>
-        </div>
-    </footer>
-
+    <footer><div class="contenedor"><p>Recetapp - Panel de administrador</p></div></footer>
     <script src="js/admin-recetas.js"></script>
 </body>
 </html>

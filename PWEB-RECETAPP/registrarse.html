@@ -23,34 +23,38 @@
             <h1>Crear una cuenta</h1>
             <p class="descripcion-formulario">Completá el formulario para registrarte.</p>
 
-            <form id="formulario-registro" action="iniciar-sesion.html" novalidate>
+            {% for mensaje in get_flashed_messages() %}
+                <p class="mensaje-error">{{ mensaje }}</p>
+            {% endfor %}
+
+            <form id="formulario-registro" action="registrarse.html" method="POST" novalidate>
                 <div class="campo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" required>
+                    <input type="text" id="nombre" name="nombre" required>
                     <p class="mensaje-error" id="error-nombre"></p>
                 </div>
 
                 <div class="campo">
                     <label for="apellido">Apellido</label>
-                    <input type="text" id="apellido" required>
+                    <input type="text" id="apellido" name="apellido" required>
                     <p class="mensaje-error" id="error-apellido"></p>
                 </div>
 
                 <div class="campo">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" required>
+                    <input type="email" id="correo" name="mail" required>
                     <p class="mensaje-error" id="error-correo"></p>
                 </div>
 
                 <div class="campo">
                     <label for="usuario">Nombre de usuario</label>
-                    <input type="text" id="usuario" required>
+                    <input type="text" id="usuario" name="usuario" required>
                     <p class="mensaje-error" id="error-usuario"></p>
                 </div>
 
                 <div class="campo">
                     <label for="contrasena">Contraseña</label>
-                    <input type="password" id="contrasena" required>
+                    <input type="password" id="contrasena" name="contrasenia" required>
                     <p class="mensaje-error" id="error-contrasena"></p>
                 </div>
 
@@ -76,9 +80,7 @@
     </main>
 
     <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
+        <div class="contenedor"><p>Recetapp - 2026</p></div>
     </footer>
 
     <script src="js/registro.js"></script>

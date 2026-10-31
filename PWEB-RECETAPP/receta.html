@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasta con salsa - Recetapp</title>
+    <title>{{ receta.nombre }} - Recetapp</title>
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/receta.css">
 </head>
@@ -23,7 +23,11 @@
                 <a href="perfil.html">Perfil</a>
             </nav>
 
-            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+            {% if session.get('usuario_id') %}
+                <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
+            {% else %}
+                <a class="boton-secundario" href="iniciar-sesion.html">Iniciar sesión</a>
+            {% endif %}
         </div>
     </header>
 
@@ -31,23 +35,35 @@
         <a class="volver" href="index.html">Volver a las recetas</a>
 
         <section class="encabezado-receta">
-            <img class="imagen-principal" src="imagenes/pasta.jpg" alt="Pasta con salsa casera">
+            <img class="imagen-principal"
+                 src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}"
+                 alt="{{ receta.nombre }}">
 
             <div class="informacion-receta">
-                <h1>Pasta con salsa casera</h1>
+                <h1>{{ receta.nombre }}</h1>
                 <p>
                     Publicada por
-                    <a class="autor" href="perfil-publico.html">Noel Marrero</a>
+                    <a class="autor" href="perfil-publico.html?id={{ receta.autor_id }}">
+                        {{ receta.autor_nombre }} {{ receta.autor_apellido }}
+                    </a>
                 </p>
-                <p>Una receta sencilla para preparar una pasta con salsa de tomate.</p>
+                <p>{{ receta.descripcion }}</p>
 
                 <div class="datos-receta">
-                    <p><strong>Tiempo:</strong> 30 minutos</p>
-                    <p><strong>Dificultad:</strong> Fácil</p>
-                    <p><strong>Porciones:</strong> 2</p>
+                    <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
+                    <p><strong>Tiempo:</strong> {{ receta.tiempo }} minutos</p>
+                    <p><strong>Dificultad:</strong> {{ receta.dificultad|capitalize }}</p>
+                    <p><strong>Porciones:</strong> {{ receta.porciones }}</p>
                 </div>
 
-                <button class="boton" id="boton-guardar" type="button">Guardar receta</button>
+                {% if session.get('usuario_id') %}
+                    <form action="favorito/{{ receta.id }}" method="POST">
+                        <input type="hidden" name="destino" value="/receta.html?id={{ receta.id }}">
+                        <button class="boton" type="submit">
+                            {% if es_favorita %}Quitar de favoritos{% else %}Guardar receta{% endif %}
+                        </button>
+                    </form>
+                {% endif %}
             </div>
         </section>
 
@@ -55,24 +71,18 @@
             <div class="ingredientes">
                 <h2>Ingredientes</h2>
                 <ul>
-                    <li>250 gramos de pasta</li>
-                    <li>2 tomates</li>
-                    <li>Media cebolla</li>
-                    <li>1 diente de ajo</li>
-                    <li>Sal y pimienta</li>
-                    <li>Queso rallado</li>
+                    {% for ingrediente in receta.ingredientes.splitlines() %}
+                        {% if ingrediente %}<li>{{ ingrediente }}</li>{% endif %}
+                    {% endfor %}
                 </ul>
             </div>
 
             <div class="preparacion">
                 <h2>Preparación</h2>
                 <ol>
-                    <li>Hervir la pasta en agua con sal.</li>
-                    <li>Cortar la cebolla, el ajo y los tomates.</li>
-                    <li>Cocinar la cebolla y el ajo en una sartén.</li>
-                    <li>Agregar los tomates y cocinar durante 15 minutos.</li>
-                    <li>Mezclar la pasta con la salsa.</li>
-                    <li>Servir con queso rallado.</li>
+                    {% for paso in receta.preparacion.splitlines() %}
+                        {% if paso %}<li>{{ paso }}</li>{% endif %}
+                    {% endfor %}
                 </ol>
             </div>
         </section>
@@ -81,39 +91,42 @@
             <h2>Comentarios</h2>
 
             <div id="lista-comentarios">
-                <article class="comentario">
-                    <h3>María Pérez</h3>
-                    <p>La preparé para el almuerzo y quedó muy rica.</p>
-                </article>
+                {% for comentario in comentarios %}
+                    <article class="comentario">
+                        <h3>{{ comentario.nombre }} {{ comentario.apellido }}</h3>
+                        <p>{{ comentario.contenido }}</p>
+                    </article>
+                {% endfor %}
 
-                <article class="comentario">
-                    <h3>Juan López</h3>
-                    <p>Fácil de seguir. Le agregué un poco de albahaca.</p>
-                </article>
+                {% if comentarios|length == 0 %}
+                    <p>Todavía no hay comentarios.</p>
+                {% endif %}
             </div>
 
-            <form class="formulario-comentario" id="formulario-comentario" novalidate>
-                <h3>Dejá tu comentario</h3>
+            {% if session.get('usuario_id') %}
+                <form class="formulario-comentario"
+                      id="formulario-comentario"
+                      action="comentar/{{ receta.id }}" method="POST" novalidate>
+                    <h3>Dejá tu comentario</h3>
 
-                <label for="nombre-comentario">Nombre</label>
-                <input type="text" id="nombre-comentario">
-                <p class="mensaje-error" id="error-nombre-comentario"></p>
+                    <label for="texto-comentario">Comentario</label>
+                    <textarea id="texto-comentario" name="contenido" rows="4"></textarea>
+                    <p class="mensaje-error" id="error-texto-comentario"></p>
 
-                <label for="texto-comentario">Comentario</label>
-                <textarea id="texto-comentario" rows="4"></textarea>
-                <p class="mensaje-error" id="error-texto-comentario"></p>
-
-                <button class="boton" type="submit">Publicar comentario</button>
-            </form>
+                    <button class="boton" type="submit">Publicar comentario</button>
+                </form>
+            {% else %}
+                <p><a class="autor" href="iniciar-sesion.html">Iniciá sesión para comentar.</a></p>
+            {% endif %}
         </section>
     </main>
 
     <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
+        <div class="contenedor"><p>Recetapp - 2026</p></div>
     </footer>
 
-    <script src="js/receta.js"></script>
+    {% if session.get('usuario_id') %}
+        <script src="js/receta.js"></script>
+    {% endif %}
 </body>
 </html>

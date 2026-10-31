@@ -1,6 +1,5 @@
 var formularioLogin = document.getElementById("formulario-login");
 var mostrarContrasena = document.getElementById("mostrar-contrasena");
-
 var expresionCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 formularioLogin.addEventListener("submit", function(evento) {
@@ -8,15 +7,12 @@ formularioLogin.addEventListener("submit", function(evento) {
 
     var correo = document.getElementById("correo");
     var contrasena = document.getElementById("contrasena");
-
     var errorCorreo = document.getElementById("error-correo");
     var errorContrasena = document.getElementById("error-contrasena");
-
     var formularioValido = true;
 
     errorCorreo.textContent = "";
     errorContrasena.textContent = "";
-
     correo.classList.remove("campo-error");
     contrasena.classList.remove("campo-error");
 
@@ -35,16 +31,13 @@ formularioLogin.addEventListener("submit", function(evento) {
         contrasena.classList.add("campo-error");
         formularioValido = false;
     } else if (contrasena.value.length < 6) {
-        errorContrasena.textContent =
-            "La contraseña debe tener al menos 6 caracteres.";
-
+        errorContrasena.textContent = "La contraseña debe tener al menos 6 caracteres.";
         contrasena.classList.add("campo-error");
         formularioValido = false;
     }
 
     if (formularioValido === true) {
-        alert("Inicio de sesión correcto.");
-        window.location.href = "perfil.html";
+        formularioLogin.submit();
     }
 });
 

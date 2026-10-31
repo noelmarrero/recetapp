@@ -23,27 +23,26 @@
             <h1>Iniciar sesión</h1>
             <p class="descripcion-formulario">Ingresá los datos de tu cuenta.</p>
 
-            <form id="formulario-login" action="perfil.html" novalidate>
+            {% for mensaje in get_flashed_messages() %}
+                <p class="mensaje-error">{{ mensaje }}</p>
+            {% endfor %}
+
+            <form id="formulario-login" action="iniciar-sesion.html" method="POST" novalidate>
                 <div class="campo">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" required>
+                    <input type="email" id="correo" name="mail" required>
                     <p class="mensaje-error" id="error-correo"></p>
                 </div>
 
                 <div class="campo">
                     <label for="contrasena">Contraseña</label>
-                    <input type="password" id="contrasena" required>
+                    <input type="password" id="contrasena" name="contrasenia" required>
                     <p class="mensaje-error" id="error-contrasena"></p>
                 </div>
 
                 <div class="mostrar-contrasena">
                     <input type="checkbox" id="mostrar-contrasena">
                     <label for="mostrar-contrasena">Mostrar contraseña</label>
-                </div>
-
-                <div class="recordar">
-                    <input type="checkbox" id="recordarme">
-                    <label for="recordarme">Recordarme</label>
                 </div>
 
                 <button class="boton boton-formulario" type="submit">Ingresar</button>
@@ -53,17 +52,11 @@
                 ¿No tenés una cuenta?
                 <a href="registrarse.html">Registrate</a>
             </p>
-
-            <p class="enlace-formulario">
-                <a href="admin.html">Ingresar al panel de administrador</a>
-            </p>
         </div>
     </main>
 
     <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
+        <div class="contenedor"><p>Recetapp - 2026</p></div>
     </footer>
 
     <script src="js/login.js"></script>

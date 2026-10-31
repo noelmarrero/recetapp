@@ -14,13 +14,13 @@
                 <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
                 <span>Recetapp</span>
             </a>
-
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="favoritos.html">Favoritos</a>
                 <a href="publicar-receta.html">Publicar</a>
                 <a href="perfil.html">Perfil</a>
             </nav>
+            <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
@@ -28,50 +28,68 @@
         <h1>Publicar una receta</h1>
         <p>Completá los datos de la receta.</p>
 
-        <form class="formulario-receta" id="formulario-receta" action="perfil.html" novalidate>
+        <form class="formulario-receta" id="formulario-receta"
+              action="publicar-receta.html" method="POST"
+              enctype="multipart/form-data" novalidate>
             <div class="campo">
                 <label for="nombre-receta">Nombre de la receta</label>
-                <input type="text" id="nombre-receta" required>
+                <input type="text" id="nombre-receta" name="nombre" required>
                 <p class="mensaje-error" id="error-nombre-receta"></p>
             </div>
 
             <div class="campo">
                 <label for="descripcion">Descripción</label>
-                <textarea id="descripcion" rows="4" required></textarea>
+                <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
                 <p class="mensaje-error" id="error-descripcion"></p>
             </div>
 
             <div class="campo">
                 <label for="categoria-receta">Categoría</label>
-                <select id="categoria-receta">
-                    <option>Pastas</option>
-                    <option>Ensaladas</option>
-                    <option>Postres</option>
-                    <option>Otras</option>
+                <select id="categoria-receta" name="id_categoria" required>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
             <div class="campo">
                 <label for="ingredientes">Ingredientes</label>
-                <textarea id="ingredientes" rows="6" placeholder="Escribí un ingrediente por línea" required></textarea>
+                <textarea id="ingredientes" name="ingredientes" rows="6"
+                          placeholder="Escribí un ingrediente por línea" required></textarea>
                 <p class="mensaje-error" id="error-ingredientes"></p>
             </div>
 
             <div class="campo">
                 <label for="preparacion">Preparación</label>
-                <textarea id="preparacion" rows="7" placeholder="Explicá los pasos de la receta" required></textarea>
+                <textarea id="preparacion" name="preparacion" rows="7"
+                          placeholder="Explicá un paso por línea" required></textarea>
                 <p class="mensaje-error" id="error-preparacion"></p>
             </div>
 
             <div class="campo">
-                <label for="tiempo">Tiempo de preparación</label>
-                <input type="text" id="tiempo" placeholder="Ejemplo: 30 minutos">
+                <label for="tiempo">Tiempo en minutos</label>
+                <input type="number" id="tiempo" name="tiempo" min="1" required>
                 <p class="mensaje-error" id="error-tiempo"></p>
             </div>
 
             <div class="campo">
+                <label for="porciones">Porciones</label>
+                <input type="number" id="porciones" name="porciones" min="1" required>
+                <p class="mensaje-error" id="error-porciones"></p>
+            </div>
+
+            <div class="campo">
+                <label for="dificultad">Dificultad</label>
+                <select id="dificultad" name="dificultad">
+                    <option value="facil">Fácil</option>
+                    <option value="media">Media</option>
+                    <option value="dificil">Difícil</option>
+                </select>
+            </div>
+
+            <div class="campo">
                 <label for="imagen">Imagen de la receta</label>
-                <input type="file" id="imagen" accept="image/*">
+                <input type="file" id="imagen" name="imagen" accept="image/*">
             </div>
 
             <button class="boton" type="submit">Publicar receta</button>
@@ -79,9 +97,7 @@
     </main>
 
     <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
+        <div class="contenedor"><p>Recetapp - 2026</p></div>
     </footer>
 
     <script src="js/publicar-receta.js"></script>

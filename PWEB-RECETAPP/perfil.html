@@ -14,30 +14,28 @@
                 <img src="imagenes/logo-recetapp.png" alt="Logo de Recetapp">
                 <span>Recetapp</span>
             </a>
-
             <nav>
                 <a href="index.html">Inicio</a>
-                <a href="index.html#recetas">Recetas</a>
                 <a href="favoritos.html">Favoritos</a>
                 <a href="publicar-receta.html">Publicar</a>
-                <a href="perfil.html">Perfil</a>
+                {% if session.get('rol') == 'admin' %}<a href="admin.html">Administración</a>{% endif %}
             </nav>
-
-            <a class="boton-secundario" href="iniciar-sesion.html">Cerrar sesión</a>
+            <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
         </div>
     </header>
 
     <main class="contenedor perfil">
+        {% for mensaje in get_flashed_messages() %}
+            <p class="mensaje-exito">{{ mensaje }}</p>
+        {% endfor %}
+
         <section class="datos-perfil">
-            <div class="foto-perfil">NM</div>
-
+            <div class="foto-perfil">{{ usuario.nombre[0] }}{{ usuario.apellido[0] }}</div>
             <div class="informacion-perfil">
-                <h1>Noel Marrero</h1>
-                <p>@cocina_con_noel</p>
-                <p>Me gusta compartir recetas fáciles.</p>
+                <h1>{{ usuario.nombre }} {{ usuario.apellido }}</h1>
+                <p>@{{ usuario.usuario }}</p>
+                <p>{{ usuario.sobre_mi or 'Todavía no agregó una descripción.' }}</p>
             </div>
-
-            <button class="boton" id="editar-perfil" type="button">Editar perfil</button>
         </section>
 
         <section class="recetas-perfil">
@@ -46,42 +44,34 @@
                 <a class="boton" href="publicar-receta.html">Nueva receta</a>
             </div>
 
-            <div class="receta-publicada">
-                <img class="imagen-pequena" src="imagenes/pasta.jpg" alt="Pasta con salsa casera">
-                <div>
-                    <h3><a href="receta.html">Pasta con salsa casera</a></h3>
-                    <p>Publicada el 2 de septiembre de 2026</p>
-                    <label for="estado-pasta">Estado:</label>
-                    <select class="estado-receta" id="estado-pasta" data-receta="Pasta con salsa casera">
-                        <option>Disponible</option>
-                        <option>No disponible</option>
-                    </select>
-                </div>
-            </div>
+            {% for receta in recetas %}
+                <div class="receta-publicada">
+                    <img class="imagen-pequena"
+                         src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}"
+                         alt="{{ receta.nombre }}">
+                    <div>
+                        <h3><a href="receta.html?id={{ receta.id }}">{{ receta.nombre }}</a></h3>
+                        <p>Estado actual: {{ receta.estado.replace('_', ' ')|capitalize }}</p>
 
-            <div class="receta-publicada">
-                <img class="imagen-pequena" src="imagenes/ensalada.jpg" alt="Ensalada completa">
-                <div>
-                    <h3>Ensalada completa</h3>
-                    <p>Publicada el 27 de agosto de 2026</p>
-                    <label for="estado-ensalada">Estado:</label>
-                    <select class="estado-receta" id="estado-ensalada" data-receta="Ensalada completa">
-                        <option>Disponible</option>
-                        <option>No disponible</option>
-                    </select>
+                        {% if receta.estado != 'en_revision' %}
+                            <form action="cambiar-estado-propio/{{ receta.id }}" method="POST">
+                                <label for="estado-{{ receta.id }}">Disponibilidad:</label>
+                                <select id="estado-{{ receta.id }}" name="estado" onchange="this.form.submit()">
+                                    <option value="disponible" {% if receta.estado == 'disponible' %}selected{% endif %}>Disponible</option>
+                                    <option value="no_disponible" {% if receta.estado == 'no_disponible' %}selected{% endif %}>No disponible</option>
+                                </select>
+                            </form>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
 
-            <p class="mensaje-exito" id="mensaje-estado"></p>
+            {% if recetas|length == 0 %}
+                <p>Todavía no publicaste recetas.</p>
+            {% endif %}
         </section>
     </main>
 
-    <footer>
-        <div class="contenedor">
-            <p>Recetapp - 2026</p>
-        </div>
-    </footer>
-
-    <script src="js/perfil.js"></script>
+    <footer><div class="contenedor"><p>Recetapp - 2026</p></div></footer>
 </body>
 </html>

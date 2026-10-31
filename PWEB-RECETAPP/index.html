@@ -21,11 +21,18 @@
                 <a href="favoritos.html">Favoritos</a>
                 <a href="publicar-receta.html">Publicar</a>
                 <a href="perfil.html">Perfil</a>
+                {% if session.get('rol') == 'admin' %}
+                    <a href="admin.html">Administración</a>
+                {% endif %}
             </nav>
 
             <div class="botones-header">
-                <a class="boton-secundario" href="iniciar-sesion.html">Iniciar sesión</a>
-                <a class="boton" href="registrarse.html">Registrarse</a>
+                {% if session.get('usuario_id') %}
+                    <a class="boton-secundario" href="cerrar-sesion">Cerrar sesión</a>
+                {% else %}
+                    <a class="boton-secundario" href="iniciar-sesion.html">Iniciar sesión</a>
+                    <a class="boton" href="registrarse.html">Registrarse</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -44,53 +51,57 @@
         </section>
 
         <section class="contenedor seccion" id="recetas">
-            <h2>Recetas destacadas</h2>
+            <h2>Recetas disponibles</h2>
 
             <div class="filtro-categorias">
                 <label for="categoria">Filtrar por categoría:</label>
                 <select id="categoria">
                     <option value="todas">Todas</option>
-                    <option value="pastas">Pastas</option>
-                    <option value="ensaladas">Ensaladas</option>
-                    <option value="postres">Postres</option>
+                    {% for categoria in categorias %}
+                        <option value="{{ categoria.id }}">{{ categoria.nombre }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
             <div class="lista-recetas">
-                <article class="receta" data-categoria="pastas" data-nombre="pasta con salsa">
-                    <a href="receta.html">
-                        <img class="imagen-receta" src="imagenes/pasta.jpg" alt="Plato de pasta con salsa">
-                    </a>
-                    <div class="texto-receta">
-                        <h3>
-                            <a href="receta.html">Pasta con salsa</a>
-                        </h3>
-                        <p>Una receta fácil para preparar en casa.</p>
-                        <p><strong>Tiempo:</strong> 30 minutos</p>
-                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
-                    </div>
-                </article>
+                {% for receta in recetas %}
+                    <article class="receta"
+                             data-categoria="{{ receta.id_categoria }}"
+                             data-nombre="{{ receta.nombre|lower }}">
+                        <a href="receta.html?id={{ receta.id }}">
+                            <img class="imagen-receta"
+                                 src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}"
+                                 alt="{{ receta.nombre }}">
+                        </a>
 
-                <article class="receta" data-categoria="ensaladas" data-nombre="ensalada completa">
-                    <img class="imagen-receta" src="imagenes/ensalada.jpg" alt="Ensalada completa">
-                    <div class="texto-receta">
-                        <h3>Ensalada completa</h3>
-                        <p>Una opción fresca y rápida para el almuerzo.</p>
-                        <p><strong>Tiempo:</strong> 15 minutos</p>
-                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
-                    </div>
-                </article>
+                        <div class="texto-receta">
+                            <h3>
+                                <a href="receta.html?id={{ receta.id }}">{{ receta.nombre }}</a>
+                            </h3>
+                            <p>{{ receta.descripcion }}</p>
+                            <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
+                            <p><strong>Tiempo:</strong> {{ receta.tiempo }} minutos</p>
 
-                <article class="receta" data-categoria="postres" data-nombre="torta de chocolate">
-                    <img class="imagen-receta" src="imagenes/torta.jpg" alt="Torta de chocolate">
-                    <div class="texto-receta">
-                        <h3>Torta de chocolate</h3>
-                        <p>Una torta casera para la merienda.</p>
-                        <p><strong>Tiempo:</strong> 50 minutos</p>
-                        <button class="boton-guardar" type="button">Agregar a favoritos</button>
-                    </div>
-                </article>
+                            {% if session.get('usuario_id') %}
+                                <form action="favorito/{{ receta.id }}" method="POST">
+                                    <input type="hidden" name="destino" value="/index.html">
+                                    <button class="boton-guardar" type="submit">
+                                        {% if receta.id in favoritos %}
+                                            Quitar de favoritos
+                                        {% else %}
+                                            Agregar a favoritos
+                                        {% endif %}
+                                    </button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </article>
+                {% endfor %}
             </div>
+
+            {% if recetas|length == 0 %}
+                <p>Todavía no hay recetas disponibles.</p>
+            {% endif %}
 
             <p class="sin-resultados oculto" id="sin-resultados">No se encontraron recetas.</p>
         </section>
