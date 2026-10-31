@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS recetapp
 
 USE recetapp;
 
-CREATE TABLE IF NOT EXISTS usuario (
+CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL,
     apellido VARCHAR(30) NOT NULL,
@@ -16,12 +16,12 @@ CREATE TABLE IF NOT EXISTS usuario (
     rol ENUM('usuario', 'admin') NOT NULL DEFAULT 'usuario'
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS categoria (
+CREATE TABLE categoria (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL UNIQUE
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS receta (
+CREATE TABLE receta (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_categoria INT NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS receta (
         ON DELETE RESTRICT
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS favorito (
+CREATE TABLE favorito (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_receta INT NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS favorito (
         ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS comentario (
+CREATE TABLE comentario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_receta INT NOT NULL,
