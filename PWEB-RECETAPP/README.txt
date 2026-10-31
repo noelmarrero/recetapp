@@ -1,5 +1,17 @@
 RECETAPP - ENTREGA CON BASE DE DATOS
 
+ALCANCE DE ESTA ENTREGA
+
+La conexión con la base de datos se usa solamente para:
+
+- Registrar usuarios.
+- Iniciar y cerrar sesión.
+- Cargar recetas.
+- Mostrar las recetas cargadas en la página principal.
+
+Las demás pantallas se conservan como parte del diseño realizado en las
+entregas anteriores, pero todavía no tienen conexión con la base de datos.
+
 ESTRUCTURA DEL PROYECTO
 
 - Los archivos HTML están en la carpeta principal.

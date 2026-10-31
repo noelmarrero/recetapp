@@ -18,11 +18,8 @@
             <nav>
                 <a href="index.html">Inicio</a>
                 <a href="#recetas">Recetas</a>
-                <a href="favoritos.html">Favoritos</a>
-                <a href="publicar-receta.html">Publicar</a>
-                <a href="perfil.html">Perfil</a>
-                {% if session.get('rol') == 'admin' %}
-                    <a href="admin.html">Administración</a>
+                {% if session.get('usuario_id') %}
+                    <a href="publicar-receta.html">Cargar receta</a>
                 {% endif %}
             </nav>
 
@@ -38,6 +35,10 @@
     </header>
 
     <main>
+        {% for mensaje in get_flashed_messages() %}
+            <p class="mensaje-exito contenedor">{{ mensaje }}</p>
+        {% endfor %}
+
         <section class="presentacion">
             <div class="contenedor">
                 <h1>Encontrá una receta para hoy</h1>
@@ -68,32 +69,16 @@
                     <article class="receta"
                              data-categoria="{{ receta.id_categoria }}"
                              data-nombre="{{ receta.nombre|lower }}">
-                        <a href="receta.html?id={{ receta.id }}">
-                            <img class="imagen-receta"
-                                 src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}"
-                                 alt="{{ receta.nombre }}">
-                        </a>
+                        <img class="imagen-receta"
+                             src="imagenes/{{ receta.imagen or 'logo-recetapp.png' }}"
+                             alt="{{ receta.nombre }}">
 
                         <div class="texto-receta">
-                            <h3>
-                                <a href="receta.html?id={{ receta.id }}">{{ receta.nombre }}</a>
-                            </h3>
+                            <h3>{{ receta.nombre }}</h3>
                             <p>{{ receta.descripcion }}</p>
                             <p><strong>Categoría:</strong> {{ receta.categoria }}</p>
                             <p><strong>Tiempo:</strong> {{ receta.tiempo }} minutos</p>
 
-                            {% if session.get('usuario_id') %}
-                                <form action="favorito/{{ receta.id }}" method="POST">
-                                    <input type="hidden" name="destino" value="/index.html">
-                                    <button class="boton-guardar" type="submit">
-                                        {% if receta.id in favoritos %}
-                                            Quitar de favoritos
-                                        {% else %}
-                                            Agregar a favoritos
-                                        {% endif %}
-                                    </button>
-                                </form>
-                            {% endif %}
                         </div>
                     </article>
                 {% endfor %}

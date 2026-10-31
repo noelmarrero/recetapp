@@ -69,10 +69,9 @@ CREATE TABLE comentario (
         ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-INSERT  INTO categoria (nombre) VALUES
+INSERT INTO categoria (nombre) VALUES
     ('Pastas'),
     ('Ensaladas'),
     ('Postres'),
     ('Comidas rápidas'),
     ('Otras');
-UPDATE usuario SET rol = 'admin' WHERE id = 1;
